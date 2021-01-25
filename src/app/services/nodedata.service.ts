@@ -9,6 +9,11 @@ export class NodedataService {
   constructor(private api:APIWebConfigService) { }
   BaseUrl = this.api.getBaseURL()
 
+  async GetGatewayListData() {
+    const result = await Axios.get(this.BaseUrl+'/gateway/all')
+    return result.data
+  }
+
   async GetNodeData() {
     console.log(this.BaseUrl+'/gps/allnode')
     const result = await Axios.get(this.BaseUrl+'/gps/allnode')

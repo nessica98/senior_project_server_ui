@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import nodeData from '../nodeData.interface';
+import gatewayData from 'src/app/gatewayData.interface'
 import { NodedataService } from '../services/nodedata.service';
 
 @Component({
@@ -10,14 +10,20 @@ import { NodedataService } from '../services/nodedata.service';
 export class VisualizePageNewComponent implements OnInit {
   loading: boolean = true;
   notfound: boolean = false;
-  nodeData_arr: nodeData[];
+  error: boolean = false;
+  gatewayDataList: gatewayData[] = [] ;
   constructor(private nd: NodedataService) { }
 
   ngOnInit(): void {
-    this.nd.GetNodeData().then((result) => {
-      this.nodeData_arr = result
-      if(this.nodeData_arr.length < 1) this.notfound = true;
+    this.nd.GetGatewayListData().then((result) => {
+      this.gatewayDataList = result
+      //console.log(this.nodeData_arr)
+      // if(this.nodeData_arr) this.loading = true;
+      if(this.gatewayDataList.length < 1) this.notfound = true;
       this.loading = false;
+    }).catch((reason)=>{
+      alert(reason);
+      this.error = true;
     })
     
   }
