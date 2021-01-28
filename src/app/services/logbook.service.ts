@@ -10,6 +10,11 @@ export class LogbookService {
   constructor(private api:APIWebConfigService) { }
   BaseUrl = this.api.getBaseURL()
 
+  async logbookAll() {
+    const result = await Axios.get(this.BaseUrl+'/logbook/all')
+    return result.data
+  }
+
   async gatewayDataFetch(nodename){
     const result = await Axios.get(this.BaseUrl+'/logbook/'+nodename)
     return result.data

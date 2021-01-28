@@ -18,8 +18,8 @@ export class LogbookdetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    //console.log(this.genId())
-    this.logbooklist = this.logbook.lists
+    console.log(this.genId())
+    // this.logbooklist = this.logbook.lists
     // console.log(this.logbook)
     // console.log(this.logbooklist)
     

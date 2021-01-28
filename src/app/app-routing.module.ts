@@ -12,10 +12,10 @@ import { VisualizeEachFullComponent } from './visualize-each-full/visualize-each
 
 const routes: Routes = [{path:'',component:HomepageComponent},
   { path: 'visualize', component: VisualizePageNewComponent },
-  { path: 'logbook-login', component: LoginLoggingSystemComponent },
+ // { path: 'logbook-login', component: LoginLoggingSystemComponent },
 { path: 'logbook', component: LogbookPageComponent },
 { path: 'visual', component: VisualizeEachFullComponent},
-{path:'dashboard', component:DashboardComponent, canActivate:[AuthGuard]}];
+{path:'dashboard', component:DashboardComponent}];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

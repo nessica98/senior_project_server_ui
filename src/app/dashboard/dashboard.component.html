@@ -1,71 +1,31 @@
-<div class="container">
-  <div class="row">
-    
-    <div class="col-md-6  ">
-      <span>Welcome, {{id}} </span>
-      <a href="javascript:void(0);" (click)="logout()">Logout</a>
-      <h3>Logbook</h3>
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Update Time</th>
-            <th scope="col">Menu</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let data of dataArr_recv; let i = index">
-            <th scope="col">{{i+1}}</th>
-            <th scope="col">{{data.createdAt}}</th>
-            <th scope="col">
-              <app-logbookdetail [id]="i" [data]="data"></app-logbookdetail>
-              <button type="button" class="btn btn-danger btn-sm">Delete</button>
-            </th>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <div class="col-md-6 ">
-      <div class="card">
-        <div class="card-body">
-          <div class="alert alert-primary" role="alert">
-            รายการใหม่
-          </div>
-          <form id="login1" class="needs-validation" novalidate>
-            <div class="form-group">
-              <label for="exampleInputPassword1">รหัสรายการ</label>
-              <input type="text" class="form-control" id="LogbookId" [value] = "val_IDbox" disabled>
-            </div>
-            <div class="form-group">
-              <label for="exampleInputPassword1">ชนิดสัตว์น้ำ</label>
-              <input type="text" class="form-control" id="fisherykind" required>
-            </div>
-            <div class="form-group">
-              <label for="exampleInputEmail1">จำนวน</label>
-              <input type="number" class="form-control" id="amount" aria-describedby="amount" required>
-            </div>
-            <div class="form-group">
-              <label for="exampleFormControlSelect1">หน่วย</label>
-              <select class="form-control" id="unitSelect">
-                <option>กิโลกรัม</option>
-                <option>ตัว</option>
-              </select>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
-          
-        </div>
-        <div *ngIf = "isLenLogbookZero">
-          <ul  class="list-group">
-            <li *ngFor = "let lglist of LogbookListShow; let i = index" class="list-group-item">{{lglist.FisheryKind}} {{lglist.FisheryKindAmount}} {{lglist.Unit}} <button (click)="del(i)" type="button" class="close" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button></li>
-            
-          </ul>
-          <button (click)="addValueLogbook()" type="button" class="btn btn-primary">บันทึกรายการทั้งหมด</button>
-        </div>
-      </div>
-    </div>
-  </div>
 
-</div>
+  
+    <h3>แสดง 100 รายการล่าสุด</h3>
+    <button type="button" class="btn btn-primary" (click)= "fetchOnclick()">Primary</button>
+  
+  
+    <table class="table">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">First</th>
+          <th scope="col">Last</th>
+          <th scope="col">Handle</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor = "let logbook of dataArr_recv; let i = index" >
+          <th scope="row">1</th>
+          <td>{{logbook.LogbookListId}}</td>
+          <td>{{logbook.nodename}}</td>
+          <td>{{logbook.createdAt}}</td>
+          <td>{{logbook.gatewayId}}</td>
+          <td>
+            <app-logbookdetail [id]="i" [data]="logbook"></app-logbookdetail>
+          </td>
+        </tr>
+        
+      </tbody>
+    </table>
+
