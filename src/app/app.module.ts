@@ -19,6 +19,7 @@ import { VisualizePageNewComponent } from './visualize-page-new/visualize-page-n
 import { VisualizeEachNodeComponent } from './nodes/visualize-each-node/visualize-each-node.component';
 import { VisualizeEachFullComponent } from './visualize-each-full/visualize-each-full.component';
 import { LogbookdetailComponent } from './modals/logbookdetail/logbookdetail.component';
+import { VisualizePageNodenewComponent } from './visualize-page-nodenew/visualize-page-nodenew.component';
 
 
 
@@ -36,7 +37,8 @@ import { LogbookdetailComponent } from './modals/logbookdetail/logbookdetail.com
     VisualizePageNewComponent,
     VisualizeEachNodeComponent,
     VisualizeEachFullComponent,
-    LogbookdetailComponent
+    LogbookdetailComponent,
+    VisualizePageNodenewComponent
   ],
   imports: [
     BrowserModule,

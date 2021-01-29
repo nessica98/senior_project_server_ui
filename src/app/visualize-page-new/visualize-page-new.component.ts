@@ -14,10 +14,8 @@ export class VisualizePageNewComponent implements OnInit {
   gatewayDataList: gatewayData[] = [] ;
   constructor(private nd: NodedataService) { }
 
-  ngOnInit(): void {
-    setInterval(()=>{
-      console.log(new Date())
-    }, 60000)
+  ngOnInit():void{
+    console.log('start');
     this.nd.GetGatewayListData().then((result) => {
       this.gatewayDataList = result
       //console.log(this.nodeData_arr)

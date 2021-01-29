@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -6,7 +7,7 @@ import { Injectable } from '@angular/core';
 export class APIWebConfigService {
   BaseUrl:string;
   constructor() { 
-    this.BaseUrl = 'http://localhost:5020'
+    this.BaseUrl = environment.apiUrl
   }
   getBaseURL():string{
     return this.BaseUrl
