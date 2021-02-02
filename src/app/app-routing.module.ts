@@ -8,10 +8,11 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthGuard } from './guard/auth.guard';
 import { VisualizePageNewComponent } from './visualize-page-new/visualize-page-new.component';
 import { VisualizeEachFullComponent } from './visualize-each-full/visualize-each-full.component';
+import { VisualizeNodeListServerComponent } from './visualize-node-list-server/visualize-node-list-server.component';
 
 
 const routes: Routes = [{path:'',component:HomepageComponent},
-  { path: 'visualize', component: VisualizePageNewComponent },
+  { path: 'visualize', component: VisualizeNodeListServerComponent },
  // { path: 'logbook-login', component: LoginLoggingSystemComponent },
 { path: 'logbook', component: LogbookPageComponent },
 { path: 'visual', component: VisualizeEachFullComponent},

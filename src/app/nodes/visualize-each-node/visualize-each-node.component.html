@@ -2,6 +2,7 @@
     <div class="card-body">
         <h5 class="card-title">{{nodeData.nodename}}</h5>
         <p class="card-text">Owner: {{nodeData.nodeowner}}</p>
+        <p class="card-text">Last Update: {{nodeData.nodeupdate | date: 'medium'}}</p>
         <a href="/visual?node={{nodeData.nodename}}" class="btn btn-primary">Go somewhere</a>
     </div>
 </div>

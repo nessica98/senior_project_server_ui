@@ -20,7 +20,7 @@ export class VisualizePageNewComponent implements OnInit {
     }, 60000)
     this.nd.GetGatewayListData().then((result) => {
       this.gatewayDataList = result
-      //console.log(this.nodeData_arr)
+      console.log(this.gatewayDataList)
       // if(this.nodeData_arr) this.loading = true;
       if(this.gatewayDataList.length < 1) this.notfound = true;
       this.loading = false;

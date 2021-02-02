@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 export class APIWebConfigService {
   BaseUrl:string;
   constructor() { 
-    this.BaseUrl = 'http://localhost:5020'
+    this.BaseUrl = 'http://localhost:5020/api'
   }
   getBaseURL():string{
     return this.BaseUrl
