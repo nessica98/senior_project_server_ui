@@ -38,7 +38,7 @@ export class NodedataService {
   }
 
   async GetNodeDataLatest() {
-    const result = await Axios.get(this.BaseUrl+'/allnode/latest')
+    const result = await Axios.get(this.BaseUrl+'/gps/allnode')
     return result
   }
   
