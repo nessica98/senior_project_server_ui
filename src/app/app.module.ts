@@ -19,11 +19,8 @@ import { VisualizePageNewComponent } from './visualize-page-new/visualize-page-n
 import { VisualizeEachNodeComponent } from './nodes/visualize-each-node/visualize-each-node.component';
 import { VisualizeEachFullComponent } from './visualize-each-full/visualize-each-full.component';
 import { LogbookdetailComponent } from './modals/logbookdetail/logbookdetail.component';
-<<<<<<< HEAD
 import { VisualizeNodeListServerComponent } from './visualize-node-list-server/visualize-node-list-server.component';
-=======
 import { VisualizePageNodenewComponent } from './visualize-page-nodenew/visualize-page-nodenew.component';
->>>>>>> 5bf0fa106659a2af6f776c51510e319985e5decb
 
 
 
@@ -42,11 +39,8 @@ import { VisualizePageNodenewComponent } from './visualize-page-nodenew/visualiz
     VisualizeEachNodeComponent,
     VisualizeEachFullComponent,
     LogbookdetailComponent,
-<<<<<<< HEAD
-    VisualizeNodeListServerComponent
-=======
+    VisualizeNodeListServerComponent,
     VisualizePageNodenewComponent
->>>>>>> 5bf0fa106659a2af6f776c51510e319985e5decb
   ],
   imports: [
     BrowserModule,
