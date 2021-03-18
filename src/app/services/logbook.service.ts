@@ -12,11 +12,20 @@ export class LogbookService {
 
   async logbookAll() {
     const result = await Axios.get(this.BaseUrl+'/logbook/all')
+    //console.log(result.data)
+    //  const data = result.data.sort((a,b)=>{
+    //   return a.createdAt - b.createdAt
+    // })
+
     return result.data
   }
 
   async gatewayDataFetch(nodename){
     const result = await Axios.get(this.BaseUrl+'/logbook/'+nodename)
+    console.log(result.data)
+    // const data = result.data.sort((element)=>{
+    //   return element.
+    // })
     return result.data
   }
 

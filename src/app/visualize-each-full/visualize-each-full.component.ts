@@ -18,11 +18,11 @@ import TileLayer from 'ol/layer/Tile';
   styleUrls: ['./visualize-each-full.component.css']
 })
 export class VisualizeEachFullComponent implements OnInit {
-  nodename:string;
-  nodedata:any[];
-  allgpsdata:any[];
+  nodename: string;
+  nodedata: any[];
+  allgpsdata: any[];
   nodenotfound: boolean = true;
-  @ViewChild('map',{static: true}) mapElement: any;
+  @ViewChild('map', { static: true }) mapElement: any;
   map: google.maps.Map;
   marker: google.maps.Marker;
   marker2: google.maps.Marker;
@@ -33,41 +33,50 @@ export class VisualizeEachFullComponent implements OnInit {
     private route: ActivatedRoute,
     private nd: NodedataService
   ) { }
+   isNumeric = (value) => {
+    return /^\d+$/.test(value);
+}
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
       const { node } = params
-      if (!node) {
+      if (!node   || !this.isNumeric(node)) {
         this.router.navigate(['/'])
       }
-      this.nodename = node
-      this.nd.GetFilterGPSval(node).then((val)=>{
-        this.allgpsdata = val
-        console.log(this.allgpsdata)
-        const mapProperties = {
-              center: new google.maps.LatLng(13.8463, 100.5669),
-              zoom: 15,
-              mapTypeId: google.maps.MapTypeId.ROADMAP
-            };
-            console.log(this.mapElement)
-            
-            this.map = new google.maps.Map(this.mapElement.nativeElement,mapProperties);
-            const image =    "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png";
-            new google.maps.Marker({
-              position: new google.maps.LatLng(13.8457347 ,100.5679816),
-              map:this.map,
-               icon:image,
+      // this.nodename = node
+      this.nd.GetFilterGPSval(node).then((val) => {
+        console.log(val)
+        if (val && val.nodeName) {
+          this.nodename = val.nodeName
+          this.allgpsdata = val.data
+          console.log(this.allgpsdata)
+          const mapProperties = {
+            center: new google.maps.LatLng(13.8463, 100.5669),
+            zoom: 15,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+          };
+          console.log(this.mapElement)
+
+          this.map = new google.maps.Map(this.mapElement.nativeElement, mapProperties);
+          const image = "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png";
+          new google.maps.Marker({
+            position: new google.maps.LatLng(13.8457347, 100.5679816),
+            map: this.map,
+            icon: image,
+            title: "Hello World2!",
+          })
+          this.allgpsdata.forEach((val, idx) => {
+            //console.log(val.nodeGPScoordinate.coordinates)
+            let marker = new google.maps.Marker({
+              position: new google.maps.LatLng(val.nodeGPScoordinate.coordinates[0], val.nodeGPScoordinate.coordinates[1]),
+              map: this.map,
               title: "Hello World2!",
             })
-            this.allgpsdata.forEach((val,idx)=>{
-              //console.log(val.nodeGPScoordinate.coordinates)
-              let marker = new google.maps.Marker({
-                position: new google.maps.LatLng(val.nodeGPScoordinate.coordinates[0] ,val.nodeGPScoordinate.coordinates[1]),
-                map:this.map,
-                title: "Hello World2!",
-              })
-              this.markers.push(marker)
-            })
+            this.markers.push(marker)
+          })
+        } else {
+
+        }
       })
 
       // this.nd.GetOneNodeData(node).then((val) => {
@@ -77,7 +86,7 @@ export class VisualizeEachFullComponent implements OnInit {
       //   if(this.nodedata.length>0) this.nodenotfound = false;
 
       //   // map free render
-        
+
       //   // map render
       //   const mapProperties = {
       //     center: new google.maps.LatLng(13.8463, 100.5669),
@@ -85,9 +94,9 @@ export class VisualizeEachFullComponent implements OnInit {
       //     mapTypeId: google.maps.MapTypeId.ROADMAP
       //   };
       //   console.log(this.mapElement)
-        
+
       //   this.map = new google.maps.Map(this.mapElement.nativeElement,mapProperties);
-        
+
       //   // this.allgpsdata.forEach((val,idx)=>{
       //   //   //console.log(val.nodeGPScoordinate.coordinates)
       //   //   let marker = new google.maps.Marker({
@@ -97,15 +106,15 @@ export class VisualizeEachFullComponent implements OnInit {
       //   //   })
       //   //   this.markers.push(marker)
       //   // })
-        
-        
+
+
       //   // this.marker2[2] = new google.maps.Marker({
       //   //   position: new google.maps.LatLng(13.8433, 100.5619),
       //   //   map:this.map,
       //   //   icon:"https://developers.google.com/maps/documentation/javascript/examples/full/images/info-i_maps.png",
       //   //   title: "Hello World2!",
       //   // });
-        
+
       // })
     })
 
